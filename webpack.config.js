@@ -10,52 +10,52 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  target: 'web',
+  // target: 'web',
   mode: 'production',
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   // optimization: {
   //   usedExports: true
   // },
-  optimization: {
-    minimize: false,
-    sideEffects: false,
-  },
+  // optimization: {
+  //   minimize: false,
+  //   sideEffects: false,
+  // },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules/i,
         use: [
           {
             loader: 'babel-loader',
-            options: {
-              plugins: ['lodash'],
-              presets: [['env', {'modules': false, 'targets': {'node': 10}}]]
-            }
+            // options: {
+            //   plugins: ['lodash'],
+            //   presets: [['env', {'modules': false, 'targets': {'node': 10}}]]
+            // }
           }
         ],
       },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            // options: {
-            //   // you can specify a publicPath here
-            //   // by default it use publicPath in webpackOptions.output
-            //   publicPath: '../'
-            // }
-          },
-          // 'style-loader',
-          'css-loader'
-        ]
-      }
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     {
+      //       loader: MiniCssExtractPlugin.loader,
+      //       // options: {
+      //       //   // you can specify a publicPath here
+      //       //   // by default it use publicPath in webpackOptions.output
+      //       //   publicPath: '../'
+      //       // }
+      //     },
+      //     // 'style-loader',
+      //     'css-loader'
+      //   ]
+      // }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin(),
     // new LodashModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
 
 };
