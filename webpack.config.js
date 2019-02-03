@@ -22,19 +22,19 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: 'babel-loader',
-      //       options: {
-      //         plugins: ['lodash'],
-      //         presets: [['env', {'modules': false, 'targets': {'node': 10}}]]
-      //       }
-      //     }
-      //   ],
-      // },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['lodash'],
+              presets: [['env', {'modules': false, 'targets': {'node': 10}}]]
+            }
+          }
+        ],
+      },
       {
         test: /\.css$/,
         use: [
