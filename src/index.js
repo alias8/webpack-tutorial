@@ -9,6 +9,7 @@ function component() {
   // using babel-plugin-lodash, webpack cherry picks join to package and not the entire lodash library
   // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
   // todo: produciton mode doesnt work, probably something to do with babel. Do babel tutorial
+
   element.innerHTML = [
     'Hello webpack!',
     '5 cubed is equal to ' + cube(5)
