@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
@@ -23,17 +22,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/i,
-        use: [
-          {
-            loader: 'babel-loader',
-            // options: {
-            //   plugins: ['lodash'],
-            //   presets: [['env', {'modules': false, 'targets': {'node': 10}}]]
-            // }
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
           }
-        ],
+        }
       },
       // {
       //   test: /\.css$/,
