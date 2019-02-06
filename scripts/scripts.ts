@@ -1,17 +1,22 @@
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import * as path from "path";
-import webpack from "webpack";
+import * as webpack from "webpack";
 
-const a = [1, 2]
-const c = [...a]
+const a = [1, 2];
+const c = [...a];
 
-function generateWebpackConfig(): webpack.Configuration {
+const bb = (): number => {
+  return 2;
+};
+
+const generateWebpackConfig = (): webpack.Configuration => {
   return {
     entry: path.resolve(__dirname, "src", "index.js"),
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist"),
     },
-    target1: "web",
+    target: "web",
     mode: "production",
     // devtool: "inline-source-map",
     // optimization: {
@@ -58,6 +63,6 @@ function generateWebpackConfig(): webpack.Configuration {
 
   };
 
-}
+};
 
 webpack(generateWebpackConfig());
