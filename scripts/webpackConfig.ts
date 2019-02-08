@@ -10,24 +10,22 @@ const generateWebpackConfig = (): webpack.Configuration => {
       path: path.resolve(appRoot.toString(), "dist"),
     },
     target: "web",
+    devtool: "inline-source-map",
     mode: "production",
     module: {
       rules: [
-        {
-          test: /\.m?js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env"],
-            },
-          },
-        }
+        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
       ],
     },
   };
 
 };
 
-console.log(`${JSON.stringify(generateWebpackConfig())}`);
-webpack(generateWebpackConfig());
+console.log(`${generateWebpackConfig()}`)
+
+webpack(generateWebpackConfig(), (err, stats) => {
+  if (err || stats.hasErrors()) {
+    // Handle errors here
+  }
+  // Done processing
+});

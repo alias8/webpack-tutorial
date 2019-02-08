@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ts-node scripts/webpackConfig.ts"
+    "build": "ts-node scripts/webpackConfig.ts",
+    "build2": "webpack"
   },
   "keywords": [],
   "author": "",
