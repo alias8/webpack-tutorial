@@ -1,0 +1,26 @@
+{
+  "entry": "/Users/jameskirk/dev/webpack-tutorial/src/index.js",
+  "output": {
+    "filename": "bundle.js",
+    "path": "/Users/jameskirk/dev/webpack-tutorial/dist"
+  },
+  "target": "web",
+  "mode": "production",
+  "module": {
+    "rules": [
+      {
+        "test": {},
+        "exclude": {},
+        "use": {
+          "loader": "babel-loader",
+          "options": {
+            "presets": [
+              "@babel/preset-env"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "plugins": []
+}
