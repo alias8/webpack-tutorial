@@ -10,3 +10,7 @@ from website https://webpack.js.org/guides/asset-management/
 2. learn babel config, how to use typescript with babel-loader instead of ts-loader. What does .babelrc do?
 3. What does modernizr-loader and post-css loader do?
 4. how does SSR work?
+
+
+Notes / things learned:
+1. Tree shaking only works when minification happens

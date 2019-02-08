@@ -9,7 +9,7 @@ module.exports = {
   },
   target: "web",
   devtool: "inline-source-map",
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
