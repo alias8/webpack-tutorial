@@ -14,3 +14,4 @@ from website https://webpack.js.org/guides/asset-management/
 
 Notes / things learned:
 1. Tree shaking only works when minification happens
+2. This branch is setup to show the output so you can test different options. Webpack-dev-server stores the files in a temp folder which you can't view. In real life, you would use webpackDevServer.

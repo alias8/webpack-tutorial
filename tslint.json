@@ -1,7 +1,12 @@
 {
-  "extends": "tslint:recommended",
-  "rules": {
-    "object-literal-sort-keys": false,
-    "no-console": false
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest"
+  ],
+  "jsRules": {},
+  "rules": {},
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["**/node_modules/**"]
   }
 }

@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 // import './style.css';
-import {cube} from './math.js';
+import {cube} from './math';
 
 
 function component() {
