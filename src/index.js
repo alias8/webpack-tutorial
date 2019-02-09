@@ -1,25 +1,24 @@
 // import _ from 'lodash';
-import styles from './style.scss';
-import {cube} from './math';
+import styles from "./style.scss";
+import { cube } from "./math";
 
 function component() {
-  let element = document.createElement('div');
-  element.innerHTML = [
-    'Hello webpack!',
-    '5 cubed is equal to ' + cube(5)
-  ].join('\n\n');
+  let element = document.createElement("div");
+  element.innerHTML = ["Hello webpack!", "5 cubed is equal to " + cube(5)].join(
+    "\n\n"
+  );
   element.classList.add(styles.hello);
   return element;
 }
 
 function grid() {
-  let parent = document.createElement('div');
-  parent.classList.add('wrapper');
+  let parent = document.createElement("div");
+  parent.classList.add("wrapper");
   [1, 2, 3, 4, 5, 6].forEach(index => {
-    let child = document.createElement('div');
+    let child = document.createElement("div");
     child.innerHTML = index;
     child.classList.add(styles.box);
-    parent.appendChild(child)
+    parent.appendChild(child);
   });
   return parent;
 }
@@ -32,14 +31,14 @@ function lodashImportTest() {
 
 fetch("someurl")
   .then(result => result)
-  .catch(err => err)
+  .catch(err => err);
 
 document.body.appendChild(component());
 document.body.appendChild(grid());
 
 var promise1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('foo');
+    resolve("foo");
   }, 300);
 });
 

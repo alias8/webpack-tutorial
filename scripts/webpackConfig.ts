@@ -6,12 +6,10 @@ import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
-const postcssModules = require("postcss-modules");
-import webpack, {Stats} from "webpack";
-import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
+import webpack, { Stats } from "webpack";
 
 const generateWebpackConfig = (): webpack.Configuration => {
-  const devMode = false;
+  const devMode = true;
   return {
     devtool: "inline-source-map",
     entry: path.resolve(appRoot.toString(), "src", "index.js"),
@@ -22,18 +20,27 @@ const generateWebpackConfig = (): webpack.Configuration => {
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
-            devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-            { loader: "css-loader", options: { importLoaders: 1, sourceMap: true } },
-            {loader: "postcss-loader",
-             options: {
+            MiniCssExtractPlugin.loader,
+            // devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 2,
+                localIdentName: devMode
+                  ? "[path][name]--[local]--[hash:base64:5]"
+                  : "[hash:base64:8]",
+                modules: true,
+                sourceMap: true,
+              },
+            },
+            {
+              loader: "postcss-loader",
+              options: {
                 ident: "postcss",
-                plugins: (loader: any) => [
-                  autoprefixer(),
-                  postcssModules(),
-                ],
+                plugins: (loader: any) => [autoprefixer()],
               },
-              },
-            {loader: "sass-loader", options: { sourceMap: true }},
+            },
+            { loader: "sass-loader", options: {sourceMap: true}},
           ],
         },
       ],
@@ -43,13 +50,15 @@ const generateWebpackConfig = (): webpack.Configuration => {
       path: path.resolve(appRoot.toString(), "dist"),
     },
     plugins: [
-      new CleanWebpackPlugin(["dist"], {root: path.resolve(appRoot.toString())}),
+      new CleanWebpackPlugin(["dist"], {
+        root: path.resolve(appRoot.toString()),
+      }),
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin(),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
     ],
-    resolve:  {
+    resolve: {
       extensions: [".ts", ".js"],
     },
     target: "web",
