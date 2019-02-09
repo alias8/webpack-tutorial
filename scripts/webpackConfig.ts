@@ -1,18 +1,33 @@
 /* tslint:disable:no-implicit-dependencies */
 
 import * as appRoot from "app-root-path";
+import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 import path from "path";
 import webpack, {Stats} from "webpack";
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 const generateWebpackConfig = (): webpack.Configuration => {
+  const devMode = false;
+  console.log(`MiniCssExtractPlugin.loader name is ${MiniCssExtractPlugin.loader}`);
   return {
-    devtool: "inline-source-map",
+    devtool: "source-map",
     entry: path.resolve(appRoot.toString(), "src", "index.js"),
-    mode: "development",
+    mode: devMode ? "development" : "production",
     module: {
       rules: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+        { test: /\.[jt]sx?$/, exclude: /node_modules/, loader: "babel-loader" },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+            { loader: "css-loader", options: { importLoaders: 1, sourceMap: true } },
+            "postcss-loader",
+            {loader: "sass-loader", options: { sourceMap: true }},
+          ],
+        },
       ],
     },
     output: {
@@ -20,7 +35,11 @@ const generateWebpackConfig = (): webpack.Configuration => {
       path: path.resolve(appRoot.toString(), "dist"),
     },
     plugins: [
+      new CleanWebpackPlugin(["dist"], {root: path.resolve(appRoot.toString())}),
       new FriendlyErrorsWebpackPlugin(),
+      new MiniCssExtractPlugin(),
+      new HtmlWebpackPlugin(),
+      new BundleAnalyzerPlugin(),
     ],
     resolve:  {
       extensions: [".ts", ".js"],

@@ -2,8 +2,6 @@
   "name": "webpack-demo",
   "version": "1.0.0",
   "description": "",
-  "sideEffects": false,
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "ts-node scripts/webpackConfig.ts",
@@ -14,6 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "IE 11"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
@@ -22,19 +23,31 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
+    "@types/clean-webpack-plugin": "^0.1.2",
+    "@types/html-webpack-plugin": "^3.2.0",
+    "@types/mini-css-extract-plugin": "^0.2.0",
     "@types/node": "^10.12.21",
     "@types/webpack": "^4.4.24",
+    "@types/webpack-bundle-analyzer": "^2.13.0",
     "app-root-path": "^2.1.0",
+    "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "i": "^0.3.6",
     "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "npm": "^6.7.0",
+    "postcss-loader": "^3.0.0",
     "prettier": "^1.16.4",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",
-    "webpack": "4.2",
+    "webpack": "^4.4.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2"
   },
@@ -42,6 +55,7 @@
     "@babel/polyfill": "^7.2.5",
     "@types/app-root-path": "^1.2.4",
     "@types/friendly-errors-webpack-plugin": "^0.1.1",
+    "browserslist": "^4.4.1",
     "lodash": "^4.17.11"
   }
 }
