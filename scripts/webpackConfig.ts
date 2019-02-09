@@ -1,10 +1,10 @@
 /* tslint:disable:no-implicit-dependencies */
-
 import * as appRoot from "app-root-path";
+import autoprefixer from "autoprefixer";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
 import webpack, {Stats} from "webpack";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
@@ -24,7 +24,13 @@ const generateWebpackConfig = (): webpack.Configuration => {
           use: [
             devMode ? "style-loader" : MiniCssExtractPlugin.loader,
             { loader: "css-loader", options: { importLoaders: 1, sourceMap: true } },
-            "postcss-loader",
+            {loader: "postcss-loader", options: {
+                ident: "postcss",
+                sourceMap: true,
+                plugins() {
+                  return [autoprefixer()];
+                },
+              }},
             {loader: "sass-loader", options: { sourceMap: true }},
           ],
         },
