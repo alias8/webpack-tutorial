@@ -1,5 +1,5 @@
 // import _ from 'lodash';
-import './style.scss';
+import styles from './style.scss';
 import {cube} from './math';
 
 function component() {
@@ -8,7 +8,7 @@ function component() {
     'Hello webpack!',
     '5 cubed is equal to ' + cube(5)
   ].join('\n\n');
-  element.classList.add('hello');
+  element.classList.add(styles.hello);
   return element;
 }
 
@@ -18,7 +18,7 @@ function grid() {
   [1, 2, 3, 4, 5, 6].forEach(index => {
     let child = document.createElement('div');
     child.innerHTML = index;
-    child.classList.add('box');
+    child.classList.add(styles.box);
     parent.appendChild(child)
   });
   return parent;

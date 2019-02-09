@@ -6,14 +6,14 @@ import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
+const postcssModules = require("postcss-modules");
 import webpack, {Stats} from "webpack";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 const generateWebpackConfig = (): webpack.Configuration => {
   const devMode = false;
-  console.log(`MiniCssExtractPlugin.loader name is ${MiniCssExtractPlugin.loader}`);
   return {
-    devtool: "source-map",
+    devtool: "inline-source-map",
     entry: path.resolve(appRoot.toString(), "src", "index.js"),
     mode: devMode ? "development" : "production",
     module: {
@@ -24,13 +24,15 @@ const generateWebpackConfig = (): webpack.Configuration => {
           use: [
             devMode ? "style-loader" : MiniCssExtractPlugin.loader,
             { loader: "css-loader", options: { importLoaders: 1, sourceMap: true } },
-            {loader: "postcss-loader", options: {
+            {loader: "postcss-loader",
+             options: {
                 ident: "postcss",
-                sourceMap: true,
-                plugins() {
-                  return [autoprefixer()];
-                },
-              }},
+                plugins: (loader: any) => [
+                  autoprefixer(),
+                  postcssModules(),
+                ],
+              },
+              },
             {loader: "sass-loader", options: { sourceMap: true }},
           ],
         },
