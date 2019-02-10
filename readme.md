@@ -16,3 +16,4 @@ Notes / things learned:
 3. Can use (browserList)[https://www.npmjs.com/package/browserslist] npm package to specify what environments you want to target in one place
 4. You don't need ts-loader for webpack, babel can do it and is more configurable
 5. PostCss is a webpack css loader that can do things like auto-prefix css values so that they work in non-supported browsers
+5. We're now using babel-plugin-lodash to cherry pick the lodash modules we want, and we have moved the babel config to be inside the webpackConfig.ts file

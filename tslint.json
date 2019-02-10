@@ -5,10 +5,12 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-console": false
+    "no-console": false,
+    "object-literal-key-quotes": [true, "as-needed"]
   },
   "rulesDirectory": [],
   "linterOptions": {
     "exclude": ["**/node_modules/**"]
+
   }
 }

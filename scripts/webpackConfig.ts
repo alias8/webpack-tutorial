@@ -4,6 +4,7 @@ import autoprefixer from "autoprefixer";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
 import webpack, { Stats } from "webpack";
@@ -16,7 +17,28 @@ const generateWebpackConfig = (): webpack.Configuration => {
     mode: devMode ? "development" : "production",
     module: {
       rules: [
-        { test: /\.[jt]sx?$/, exclude: /node_modules/, loader: "babel-loader" },
+        {
+          exclude: /node_modules/,
+          test: /\.[jt]sx?$/,
+          use: [
+            {
+              loader: "babel-loader",
+              options: {
+                plugins: ["lodash"],
+                presets: [
+                  [
+                    "@babel/preset-env",
+                    {
+                      debug: true,
+                      useBuiltIns: "usage",
+                    },
+                  ],
+                  "@babel/typescript",
+                ],
+              },
+            },
+          ],
+        },
         {
           test: /\.(sa|sc|c)ss$/,
           use: [
@@ -61,6 +83,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin(),
+      new LodashModuleReplacementPlugin(),
       // new BundleAnalyzerPlugin(),
     ],
     resolve: {
