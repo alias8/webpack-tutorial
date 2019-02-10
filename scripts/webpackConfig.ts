@@ -25,7 +25,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
             {
               loader: "css-loader",
               options: {
-                importLoaders: 2,
+                importLoaders: 2, // tell webpack how many loaders before this one there are. (postcss and sass)
                 localIdentName: devMode
                   ? "[path][name]--[local]--[hash:base64:5]"
                   : "[hash:base64:8]",
@@ -40,10 +40,15 @@ const generateWebpackConfig = (): webpack.Configuration => {
                 plugins: (loader: any) => [autoprefixer()],
               },
             },
-            { loader: "sass-loader", options: {sourceMap: true}},
+            { loader: "sass-loader", options: { sourceMap: true } },
           ],
         },
       ],
+    },
+    optimization: {
+      splitChunks: {
+        chunks: "all",
+      },
     },
     output: {
       filename: "bundle.js",

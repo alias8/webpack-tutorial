@@ -2,8 +2,6 @@ Repo for testing webpack config settings on a very simple project
 
 from website https://webpack.js.org/guides/asset-management/
 
-
-
 // todo:
 0. why isn't minification working? Probably something to do with babel. Do tutorial. Use example of it working here https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/
 1. turn webpack config file into typescript
@@ -11,7 +9,6 @@ from website https://webpack.js.org/guides/asset-management/
 3. What does modernizr-loader and post-css loader do?
 4. how does SSR work?
 5. how to get CSS modules working?
-
 
 Notes / things learned:
 1. Tree shaking only works when minification happens

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export function square(x: number) {
   return x * x;
 }
@@ -9,4 +11,8 @@ export function cube(x: number = 1): number {
     console.log(key);
   }
   return x * x * x;
+}
+
+function lodashTest2() {
+  console.log(`hello123 ${_.join([1, 2, 3], " ")}`);
 }

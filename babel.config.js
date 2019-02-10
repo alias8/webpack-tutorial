@@ -3,7 +3,7 @@ module.exports = {
     ["@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "debug": true
+        "debug": true,
       }],
     "@babel/typescript"
   ]

@@ -1,4 +1,4 @@
-// import _ from 'lodash';
+import _ from "lodash";
 import styles from "./style.scss";
 import { cube } from "./math";
 
@@ -14,12 +14,13 @@ function component() {
 function grid() {
   let parent = document.createElement("div");
   parent.classList.add("wrapper");
-  [1, 2, 3, 4, 5, 6].forEach(index => {
-    let child = document.createElement("div");
-    child.innerHTML = index;
-    child.classList.add(styles.box);
-    parent.appendChild(child);
-  });
+  console.log(`hello ${_.join([1, 2, 3], " ")}`);
+  // [1, 2, 3, 4, 5, 6].forEach(index => {
+  //   let child = document.createElement("div");
+  //   child.innerHTML = index;
+  //   child.classList.add(styles.box);
+  //   parent.appendChild(child);
+  // });
   return parent;
 }
 
