@@ -13,7 +13,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
   const devMode = true;
   return {
     devtool: "inline-source-map",
-    entry: path.resolve(appRoot.toString(), "src", "index.js"),
+    entry: path.resolve(appRoot.toString(), "src", "index.tsx"),
     mode: devMode ? "development" : "production",
     module: {
       rules: [
@@ -26,14 +26,14 @@ const generateWebpackConfig = (): webpack.Configuration => {
               options: {
                 // plugins: ["lodash"],
                 presets: [
-                  [
-                    "@babel/preset-env",
-                    {
-                      debug: true,
-                      useBuiltIns: "usage",
-                    },
-                  ],
-                  // "@babel/typescript",
+                  // [
+                  //   "@babel/preset-env",
+                  //   {
+                  //     debug: true,
+                  //     useBuiltIns: "usage",
+                  //   },
+                  // ],
+                  "@babel/typescript",
                 ],
               },
             },

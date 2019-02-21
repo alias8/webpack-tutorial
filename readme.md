@@ -7,9 +7,10 @@ from website https://webpack.js.org/guides/asset-management/
 1. turn webpack config file into typescript
 2. learn babel config, how to use typescript with babel-loader instead of ts-loader. What does .babelrc do?
 3. What does modernizr-loader and post-css loader do?
-4. how does SSR work?
+4. how does SSR work? Investigate nextJS
 5. how to get CSS modules working?
 6. are node_modules libraries exported as already polyfilled?
+7. how does the lock file work? how does the npm dependency tree work?
 
 Notes / things learned:
 1. Tree shaking only works when minification happens
