@@ -9,6 +9,7 @@ from website https://webpack.js.org/guides/asset-management/
 3. What does modernizr-loader and post-css loader do?
 4. how does SSR work?
 5. how to get CSS modules working?
+6. are node_modules libraries exported as already polyfilled?
 
 Notes / things learned:
 1. Tree shaking only works when minification happens

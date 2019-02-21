@@ -1,47 +1,9 @@
-import _ from "lodash";
-import styles from "./style.scss";
-import { cube } from "./math";
+import {promise2} from "./promises";
 
-function component() {
-  let element = document.createElement("div");
-  element.innerHTML = ["Hello webpack!", "5 cubed is equal to " + cube(5)].join(
-    "\n\n"
-  );
-  element.classList.add(styles.hello);
-  return element;
-}
-
-function grid() {
-  let parent = document.createElement("div");
-  parent.classList.add("wrapper");
-  console.log(`hello ${_.join([1, 2, 3], " ")}`);
-  // [1, 2, 3, 4, 5, 6].forEach(index => {
-  //   let child = document.createElement("div");
-  //   child.innerHTML = index;
-  //   child.classList.add(styles.box);
-  //   parent.appendChild(child);
-  // });
-  return parent;
-}
-
-function lodashImportTest() {
-  // using babel-plugin-lodash, webpack cherry picks join to package and not the entire lodash library
-  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  // todo: produciton mode doesnt work, probably something to do with babel. Do babel tutorial
-}
-
-fetch("someurl")
-  .then(result => result)
-  .catch(err => err);
-
-document.body.appendChild(component());
-document.body.appendChild(grid());
-
-var promise1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("foo");
+const promise1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    resolve('promise1');
   }, 300);
 });
 
-const aa = [2, 3];
-const cc = [...aa].includes(2);
+console.log("hello promise1" + promise1 + promise2);

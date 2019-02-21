@@ -24,7 +24,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
             {
               loader: "babel-loader",
               options: {
-                plugins: ["lodash"],
+                // plugins: ["lodash"],
                 presets: [
                   [
                     "@babel/preset-env",
@@ -33,7 +33,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
                       useBuiltIns: "usage",
                     },
                   ],
-                  "@babel/typescript",
+                  // "@babel/typescript",
                 ],
               },
             },
@@ -51,7 +51,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
                 localIdentName: devMode
                   ? "[path][name]--[local]--[hash:base64:5]"
                   : "[hash:base64:8]",
-                modules: true,
+                modules: false,
                 sourceMap: true,
               },
             },
