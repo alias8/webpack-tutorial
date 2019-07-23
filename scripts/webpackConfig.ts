@@ -1,7 +1,7 @@
 /* tslint:disable:no-implicit-dependencies */
 import * as appRoot from "app-root-path";
 import autoprefixer from "autoprefixer";
-import CleanWebpackPlugin from "clean-webpack-plugin";
+import {CleanWebpackPlugin} from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
@@ -30,6 +30,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
                     // this is what transforms things into our target environment
                     "@babel/preset-env",
                     {
+                      corejs: { version: 3, proposals: true },
                       debug: true,
                       useBuiltIns: "usage",
                     },
@@ -79,9 +80,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
       path: path.resolve(appRoot.toString(), "dist"),
     },
     plugins: [
-      new CleanWebpackPlugin(["dist"], {
-        root: path.resolve(appRoot.toString()),
-      }),
+      new CleanWebpackPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin(),
