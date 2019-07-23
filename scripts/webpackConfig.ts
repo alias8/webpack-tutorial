@@ -26,13 +26,15 @@ const generateWebpackConfig = (): webpack.Configuration => {
               options: {
                 // plugins: ["lodash"],
                 presets: [
-                  // [
-                  //   "@babel/preset-env",
-                  //   {
-                  //     debug: true,
-                  //     useBuiltIns: "usage",
-                  //   },
-                  // ],
+                  [
+                    // this is what transforms things into our target environment
+                    "@babel/preset-env",
+                    {
+                      debug: true,
+                      useBuiltIns: "usage",
+                    },
+                  ],
+                  // strips out type info, doesn't do any transforms
                   "@babel/typescript",
                 ],
               },
