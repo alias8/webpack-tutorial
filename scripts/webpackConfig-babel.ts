@@ -13,7 +13,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
   const devMode = true;
   return {
     devtool: "inline-source-map",
-    entry: path.resolve(appRoot.toString(), "src", "index.tsx"),
+    entry: path.resolve(appRoot.toString(), "src", "ie11-test.ts"),
     mode: devMode ? "development" : "production",
     module: {
       rules: [
@@ -71,9 +71,9 @@ const generateWebpackConfig = (): webpack.Configuration => {
       ],
     },
     optimization: {
-      splitChunks: {
-        chunks: "all",
-      },
+      // splitChunks: {
+      //   chunks: "all",
+      // },
     },
     output: {
       filename: "bundle.js",

@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ts-node scripts/webpackConfig.ts",
+    "build-babel": "ts-node scripts/webpackConfig-babel.ts",
+    "build-tsloader": "ts-node scripts/webpackConfig-tsloader.ts",
     "check-types": "tsc",
     "lint": "tslint '**/*.ts'",
     "lint:fix": "npm run lint -- --fix",

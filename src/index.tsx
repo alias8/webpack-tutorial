@@ -1,4 +1,4 @@
-import * as widget from "./widget";
+// import * as widget from "./widget";
 
 // const someNumber: number = 2;
 // console.log("testing typescript (just strips out type info): " + someNumber);
@@ -12,13 +12,13 @@ import * as widget from "./widget";
 //   }, 5000);
 // });
 
-function renderWidget() {
-  const container = document.getElementById("widget");
-  if (container !== null) {
-    import("./widget").then(widget => {
-      widget.render(container);
-    });
-  }
-}
-
-renderWidget();
+// function renderWidget() {
+//   const container = document.getElementById("widget");
+//   if (container !== null) {
+//     import("./widget").then(widget => {
+//       widget.render(container);
+//     });
+//   }
+// }
+//
+// renderWidget();
