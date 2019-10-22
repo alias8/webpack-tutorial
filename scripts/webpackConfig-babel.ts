@@ -79,6 +79,7 @@ const generateWebpackConfig = (): webpack.Configuration => {
       // splitChunks: {
       //   chunks: "all",
       // },
+      minimize: false,
     },
     output: {
       filename: "bundle.js",
