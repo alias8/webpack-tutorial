@@ -30,6 +30,11 @@ const generateWebpackConfig = (): webpack.Configuration => {
                     // this is what transforms things into our target environment
                     "@babel/preset-env",
                     {
+                      /*
+                      * Allows use of proposed javascript features! See:
+                      * http://kangax.github.io/compat-table/esnext/
+                      * https://babeljs.io/docs/en/babel-preset-env#corejs
+                      * */
                       corejs: { version: 3, proposals: true },
                       debug: true,
                       useBuiltIns: "usage",
