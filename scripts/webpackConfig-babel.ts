@@ -1,7 +1,7 @@
 /* tslint:disable:no-implicit-dependencies */
 import * as appRoot from "app-root-path";
 import autoprefixer from "autoprefixer";
-import {CleanWebpackPlugin} from "clean-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import LodashModuleReplacementPlugin from "lodash-webpack-plugin";
@@ -10,10 +10,10 @@ import path from "path";
 import webpack, { Stats } from "webpack";
 
 const generateWebpackConfig = (): webpack.Configuration => {
-  const devMode = true;
+  const devMode = false;
   return {
     devtool: "inline-source-map",
-    entry: path.resolve(appRoot.toString(), "src", "ie11-test.ts"),
+    entry: path.resolve(appRoot.toString(), "src", "ts-namespace.ts"),
     mode: devMode ? "development" : "production",
     module: {
       rules: [
@@ -24,7 +24,21 @@ const generateWebpackConfig = (): webpack.Configuration => {
             {
               loader: "babel-loader",
               options: {
-                // plugins: ["lodash"],
+                /*
+                * A plugin transforms the code eg. es6 arrow function to es5.
+                * Plugins are proposed features of javascript that are not
+                * included in the presets
+                * */
+                plugins: [
+                  ["@babel/plugin-proposal-class-properties"],
+                  ["@babel/plugin-transform-typescript", {
+                    allowNamespaces: true,
+                  }],
+                ],
+                /*
+                * A preset is a set of plugins. Transform stable features of javascript
+                * and typescript to lower-levels of javascript.
+                * */
                 presets: [
                   [
                     // this is what transforms things into our target environment
@@ -40,9 +54,8 @@ const generateWebpackConfig = (): webpack.Configuration => {
                       useBuiltIns: "usage",
                     },
                   ],
-                  // strips out type info, doesn't do any transforms
-                  "@babel/typescript",
                 ],
+
               },
             },
           ],
